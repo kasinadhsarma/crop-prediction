@@ -1,13 +1,29 @@
-'use client'
+'use client';
 
-import { useSearchParams } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import Link from 'next/link'
+import { useSearchParams } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Results() {
-  const searchParams = useSearchParams()
-  const data = JSON.parse(decodeURIComponent(searchParams.get('data') || '{}'))
+  const searchParams = useSearchParams();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Parse the "data" from searchParams safely
+    const rawData = searchParams.get('data');
+    try {
+      setData(JSON.parse(decodeURIComponent(rawData || '{}')));
+    } catch (error) {
+      console.error('Failed to parse search params:', error);
+      setData({});
+    }
+  }, [searchParams]);
+
+  if (!data) {
+    return <p className="text-center text-lg">Loading results...</p>;
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -18,10 +34,10 @@ export default function Results() {
             <CardTitle>Crop Recommendations</CardTitle>
           </CardHeader>
           <CardContent>
-            <p><strong>Suggested Crop:</strong> {data.cropType}</p>
-            <p><strong>Suggested Fertilizers:</strong> {data.fertilizers.join(', ')}</p>
-            <p><strong>Suggested Pesticides:</strong> {data.pesticides.join(', ')}</p>
-            <p><strong>Potential Diseases:</strong> {data.diseases.join(', ')}</p>
+            <p><strong>Suggested Crop:</strong> {data.cropType || 'N/A'}</p>
+            <p><strong>Suggested Fertilizers:</strong> {data.fertilizers?.join(', ') || 'N/A'}</p>
+            <p><strong>Suggested Pesticides:</strong> {data.pesticides?.join(', ') || 'N/A'}</p>
+            <p><strong>Potential Diseases:</strong> {data.diseases?.join(', ') || 'N/A'}</p>
           </CardContent>
         </Card>
         <Card>
@@ -29,11 +45,11 @@ export default function Results() {
             <CardTitle>Soil Recommendations</CardTitle>
           </CardHeader>
           <CardContent>
-            <p><strong>pH Value:</strong> {data.soilRecommendations.pH}</p>
-            <p><strong>Nitrogen:</strong> {data.soilRecommendations.nitrogen} kg/ha</p>
-            <p><strong>Phosphorus:</strong> {data.soilRecommendations.phosphorus} kg/ha</p>
-            <p><strong>Potassium:</strong> {data.soilRecommendations.potassium} kg/ha</p>
-            <p><strong>Water Requirement:</strong> {data.soilRecommendations.water} mm</p>
+            <p><strong>pH Value:</strong> {data.soilRecommendations?.pH || 'N/A'}</p>
+            <p><strong>Nitrogen:</strong> {data.soilRecommendations?.nitrogen || 'N/A'} kg/ha</p>
+            <p><strong>Phosphorus:</strong> {data.soilRecommendations?.phosphorus || 'N/A'} kg/ha</p>
+            <p><strong>Potassium:</strong> {data.soilRecommendations?.potassium || 'N/A'} kg/ha</p>
+            <p><strong>Water Requirement:</strong> {data.soilRecommendations?.water || 'N/A'} mm</p>
           </CardContent>
         </Card>
         <Card>
@@ -41,7 +57,7 @@ export default function Results() {
             <CardTitle>Yield Prediction</CardTitle>
           </CardHeader>
           <CardContent>
-            <p><strong>Estimated Yield:</strong> {data.yield} tons/acre</p>
+            <p><strong>Estimated Yield:</strong> {data.yield || 'N/A'} tons/acre</p>
           </CardContent>
         </Card>
       </div>
@@ -51,6 +67,5 @@ export default function Results() {
         </Button>
       </div>
     </div>
-  )
+  );
 }
-
