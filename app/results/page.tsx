@@ -1,11 +1,13 @@
 import ResultsClient from './results-client';
 
 // app/results/page.tsx
-export default function ResultsPage({
+export default async function ResultsPage({
   searchParams,
 }: {
   searchParams: { data?: string };
 }) {
-  // Remove async since we're not using await
-  return <ResultsClient searchParams={searchParams} />;
+  // Parse searchParams before passing to client component
+  const parsedParams = searchParams?.data ? JSON.parse(searchParams.data) : null;
+  
+  return <ResultsClient initialData={parsedParams} />;
 }

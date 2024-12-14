@@ -18,31 +18,28 @@ interface PredictionInput {
 }
 
 export default function ResultsClient({ 
-  searchParams 
+  initialData 
 }: { 
-  searchParams: { data?: string } 
+  initialData: PredictionInput | null
 }) {
   const [prediction, setPrediction] = useState<PredictionResult | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [inputParams, setInputParams] = useState<PredictionInput | null>(null);
+  const [inputParams] = useState<PredictionInput | null>(initialData);
 
   useEffect(() => {
     const fetchPrediction = async () => {
-      if (!searchParams?.data) {
+      if (!initialData) {
         setIsLoading(false);
         return;
       }
 
       try {
-        const params = JSON.parse(searchParams.data);
-        setInputParams(params);
-
         const response = await fetch('http://127.0.0.1:5000/predict_crop', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(params),
+          body: JSON.stringify(initialData),
         });
 
         const data = await response.json();
@@ -56,7 +53,7 @@ export default function ResultsClient({
     };
 
     fetchPrediction();
-  }, [searchParams?.data]);
+  }, [initialData]);
 
   if (isLoading) {
     return (
