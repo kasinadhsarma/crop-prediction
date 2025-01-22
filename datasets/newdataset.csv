@@ -1,0 +1,101 @@
+field_id, land, temperature, humidity, rainfall, budget, soil_type, ph, water_requirement, suggested_crop, suggested_fertilizers, suggested_pesticides, potential_diseases, nitrogen, phosphorus, potassium, estimated_yield
+1	10	25	60	500	5000	Sandy	6.5	20	Rice	Ammonium Nitrate	Malathion	Blast	130	65	95	5
+2	15	28	55	600	7000	Clay	7	25	Wheat	Urea	Chlorpyrifos	Rust	120	60	90	7
+3	20	22	65	450	6000	Loam	6	18	Corn	Ammonium Nitrate	Malathion	Maize Lethal Necrosis	150	75	100	6
+4	12	27	58	550	6500	Sandy	6.8	22	Rice	DAP	Imidacloprid	Blast	130	65	95	6
+5	18	24	62	480	6200	Clay	7.2	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	140	70	105	8
+6	14	26	63	520	6800	Loam	6.7	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	135	68	98	7
+7	22	23	61	470	7200	Sandy	6.6	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	145	72	102	6
+8	16	29	57	610	7500	Clay	7.1	26	Barley	Urea	Chlorpyrifos	Rust	125	62	92	7
+9	13	21	64	460	6300	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	155	77	104	5
+10	19	25	60	510	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	132	66	96	6
+11	17	27	59	560	7100	Clay	7.3	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	142	71	106	8
+12	21	24	62	490	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	137	69	99	7
+13	15	28	56	620	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	147	73	103	6
+14	18	23	63	475	6400	Clay	7.2	25	Oats	Urea	Chlorpyrifos	Rust	127	63	93	7
+15	16	22	65	455	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	157	78	105	5
+16	20	26	61	530	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	133	67	97	6
+17	19	25	60	505	6800	Clay	7.1	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	143	72	107	8
+18	14	27	58	540	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	138	68	98	7
+19	22	23	61	465	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	148	74	102	6
+20	16	29	57	605	7600	Clay	7.3	26	Barley	Urea	Chlorpyrifos	Rust	126	64	94	7
+21	13	21	64	465	6200	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	156	76	103	5
+22	19	25	60	515	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	131	65	95	6
+23	17	27	59	555	7100	Clay	7.2	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	141	70	105	8
+24	21	24	62	485	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	136	69	99	7
+25	15	28	56	615	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	146	73	101	6
+26	18	23	63	470	6400	Clay	7.1	25	Oats	Urea	Chlorpyrifos	Rust	128	62	92	7
+27	16	22	65	450	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	158	79	104	5
+28	20	26	61	525	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	134	66	96	6
+29	19	25	60	500	6800	Clay	7.0	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	144	71	106	8
+30	14	27	58	535	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	139	67	97	7
+31	22	23	61	460	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	149	75	103	6
+32	16	29	57	600	7600	Clay	7.3	26	Barley	Urea	Chlorpyrifos	Rust	129	65	95	7
+33	13	21	64	460	6200	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	159	77	102	5
+34	19	25	60	510	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	130	64	94	6
+35	17	27	59	550	7100	Clay	7.2	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	140	70	104	8
+36	21	24	62	480	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	135	68	98	7
+37	15	28	56	610	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	145	72	100	6
+38	18	23	63	475	6400	Clay	7.1	25	Oats	Urea	Chlorpyrifos	Rust	127	63	93	7
+39	16	22	65	455	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	157	78	105	5
+40	20	26	61	520	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	133	67	97	6
+41	19	25	60	505	6800	Clay	7.0	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	143	71	106	8
+42	14	27	58	530	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	138	68	98	7
+43	22	23	61	465	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	148	74	102	6
+44	16	29	57	605	7600	Clay	7.3	26	Barley	Urea	Chlorpyrifos	Rust	126	64	94	7
+45	13	21	64	465	6200	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	156	76	103	5
+46	19	25	60	515	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	131	65	95	6
+47	17	27	59	555	7100	Clay	7.2	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	141	70	105	8
+48	21	24	62	485	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	136	69	99	7
+49	15	28	56	615	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	146	73	101	6
+50	18	23	63	470	6400	Clay	7.1	25	Oats	Urea	Chlorpyrifos	Rust	128	62	92	7
+51	14	26	63	520	6800	Loam	6.7	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	135	68	98	7
+52	22	23	61	470	7200	Sandy	6.6	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	145	72	102	6
+53	16	29	57	610	7500	Clay	7.1	26	Barley	Urea	Chlorpyrifos	Rust	125	62	92	7
+54	13	21	64	460	6300	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	155	77	104	5
+55	19	25	60	510	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	132	66	96	6
+56	17	27	59	560	7100	Clay	7.3	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	142	71	106	8
+57	21	24	62	490	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	137	69	99	7
+58	15	28	56	620	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	147	73	103	6
+59	18	23	63	475	6400	Clay	7.2	25	Oats	Urea	Chlorpyrifos	Rust	127	63	93	7
+60	16	22	65	455	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	157	78	105	5
+61	20	26	61	530	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	133	67	97	6
+62	19	25	60	505	6800	Clay	7.2	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	143	72	107	8
+63	14	27	58	540	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	138	68	98	7
+64	22	23	61	465	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	148	74	102	6
+65	16	29	57	605	7600	Clay	7.3	26	Barley	Urea	Chlorpyrifos	Rust	126	64	94	7
+66	13	21	64	465	6200	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	156	76	103	5
+67	19	25	60	515	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	131	65	95	6
+68	17	27	59	555	7100	Clay	7.2	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	141	70	105	8
+69	21	24	62	485	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	136	69	99	7
+70	15	28	56	615	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	146	73	101	6
+71	18	23	63	470	6400	Clay	7.1	25	Oats	Urea	Chlorpyrifos	Rust	128	62	92	7
+72	16	22	65	450	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	158	79	104	5
+73	20	26	61	525	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	134	66	96	6
+74	19	25	60	500	6800	Clay	7.0	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	144	71	106	8
+75	14	27	58	535	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	139	67	97	7
+76	22	23	61	460	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	149	75	103	6
+77	16	29	57	600	7600	Clay	7.3	26	Barley	Urea	Chlorpyrifos	Rust	129	65	95	7
+78	13	21	64	460	6200	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	159	77	102	5
+79	19	25	60	510	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	130	64	94	6
+80	17	27	59	550	7100	Clay	7.2	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	140	70	104	8
+81	21	24	62	480	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	135	68	98	7
+82	15	28	56	610	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	145	72	100	6
+83	18	23	63	475	6400	Clay	7.1	25	Oats	Urea	Chlorpyrifos	Rust	127	63	93	7
+84	16	22	65	455	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	157	78	105	5
+85	20	26	61	520	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	133	67	97	6
+86	19	25	60	505	6800	Clay	7.0	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	143	71	106	8
+87	14	27	58	530	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	138	68	98	7
+88	22	23	61	465	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	148	74	102	6
+89	16	29	57	605	7600	Clay	7.3	26	Barley	Urea	Chlorpyrifos	Rust	126	64	94	7
+90	13	21	64	465	6200	Loam	6.4	17	Potatoes	Ammonium Nitrate	Malathion	Late Blight	156	76	103	5
+91	19	25	60	515	6700	Sandy	6.9	23	Peanuts	DAP	Imidacloprid	Blight	131	65	95	6
+92	17	27	59	555	7100	Clay	7.2	27	Sugarcane	Potassium Nitrate	Metomil	Red Rot	141	70	105	8
+93	21	24	62	485	6900	Loam	6.5	20	Cotton	Calcium Nitrate	Diazinon	Verticillium Wilt	136	69	99	7
+94	15	28	56	615	7300	Sandy	6.7	21	Sunflowers	Ammonium Sulfate	Thiodicarb	Downy Mildew	146	73	101	6
+95	18	23	63	470	6400	Clay	7.1	25	Oats	Urea	Chlorpyrifos	Rust	128	62	92	7
+96	16	22	65	450	6100	Loam	6.3	18	Carrots	Ammonium Nitrate	Malathion	Root Rot	158	79	104	5
+97	20	26	61	525	6600	Sandy	6.8	22	Beans	DAP	Imidacloprid	Blight	134	66	96	6
+98	19	25	60	500	6800	Clay	7.0	24	Soybean	Potassium Nitrate	Metomil	Asian Soybean Rust	144	71	106	8
+99	14	27	58	535	7000	Loam	6.6	21	Tomatoes	Calcium Nitrate	Diazinon	Bacterial Spot	139	67	97	7
+100	22	23	61	460	7400	Sandy	6.5	19	Onions	Ammonium Sulfate	Thiodicarb	Downy Mildew	149	75	103	6

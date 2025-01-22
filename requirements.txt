@@ -1,0 +1,10 @@
+flask
+numpy
+joblib
+scikit-learn
+pandas
+pysqlite3
+datetime
+hashlib
+fastapi
+uvicorn

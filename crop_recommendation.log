@@ -1,0 +1,93 @@
+2024-12-17 09:58:33,454 - INFO - Dataset loaded successfully: datasets/newdataset.csv
+2024-12-17 09:58:33,454 - INFO - Dataset shape: (100, 1)
+2024-12-17 09:58:33,454 - INFO - Available columns: ['field_id, land, temperature, humidity, rainfall, budget, soil_type, ph, water_requirement, suggested_crop, suggested_fertilizers, suggested_pesticides, potential_diseases, nitrogen, phosphorus, potassium, estimated_yield']
+2024-12-17 09:58:33,456 - INFO - Feature engineering completed
+2024-12-17 09:58:35,145 - INFO - Model Accuracy: 1.00
+2024-12-17 09:58:35,149 - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           5       1.00      1.00      1.00         5
+           6       1.00      1.00      1.00         7
+           7       1.00      1.00      1.00         4
+           8       1.00      1.00      1.00         4
+
+    accuracy                           1.00        20
+   macro avg       1.00      1.00      1.00        20
+weighted avg       1.00      1.00      1.00        20
+
+2024-12-17 09:58:35,151 - INFO - Saved scaler to pkl/crop_recommendation_scaler.pkl
+2024-12-17 09:58:35,153 - INFO - Saved model to pkl/crop_recommendation_model.pkl
+2024-12-17 09:58:35,153 - INFO - Saved features to pkl/crop_recommendation_features.pkl
+2024-12-17 11:00:18,972 - INFO - Dataset loaded successfully: datasets/dataset.json
+2024-12-17 11:00:18,973 - INFO - Dataset shape: (51, 17)
+2024-12-17 11:00:18,973 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2024-12-17 11:00:18,974 - INFO - Feature engineering completed
+2024-12-17 11:00:18,980 - WARNING - Small sample size detected (min=1). Using random oversampling.
+2024-12-17 11:04:09,933 - INFO - Dataset loaded successfully: datasets/dataset.json
+2024-12-17 11:04:09,933 - INFO - Dataset shape: (51, 17)
+2024-12-17 11:04:09,933 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2024-12-17 11:04:09,935 - INFO - Feature engineering completed
+2024-12-17 11:04:09,942 - WARNING - Small sample size detected (min=1). Using random oversampling.
+2024-12-17 11:04:11,503 - INFO - Best parameters found: {'n_neighbors': 3, 'weights': 'uniform'}
+2024-12-17 11:04:11,505 - INFO - Model Accuracy: 0.91
+2024-12-17 11:04:11,508 - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+      Barley       1.00      1.00      1.00         1
+       Beans       1.00      1.00      1.00         1
+      Cotton       1.00      1.00      1.00         2
+      Onions       1.00      1.00      1.00         2
+     Peanuts       1.00      1.00      1.00         1
+        Rice       1.00      0.00      0.00         1
+     Soybean       1.00      1.00      1.00         1
+  Sunflowers       1.00      1.00      1.00         1
+    Tomatoes       0.50      1.00      0.67         1
+
+    accuracy                           0.91        11
+   macro avg       0.94      0.89      0.85        11
+weighted avg       0.95      0.91      0.88        11
+
+2024-12-17 11:04:11,509 - INFO - Saved scaler to pkl/crop_recommendation_scaler.pkl
+2024-12-17 11:04:11,511 - INFO - Saved model to pkl/crop_recommendation_model.pkl
+2024-12-17 11:04:11,511 - INFO - Saved features to pkl/crop_recommendation_features.pkl
+2024-12-17 11:08:13,739 - INFO - Dataset loaded successfully: datasets/dataset.json
+2024-12-17 11:08:13,739 - INFO - Dataset shape: (51, 17)
+2024-12-17 11:08:13,739 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2024-12-17 11:08:13,741 - INFO - Feature engineering completed
+2024-12-17 11:08:13,746 - WARNING - Small sample size detected (min=1). Using random oversampling.
+2024-12-17 11:09:23,908 - INFO - Dataset loaded successfully: datasets/dataset.json
+2024-12-17 11:09:23,909 - INFO - Dataset shape: (51, 17)
+2024-12-17 11:09:23,909 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2024-12-17 11:09:23,911 - INFO - Feature engineering completed
+2024-12-17 11:09:23,916 - WARNING - Small sample size detected (min=1). Using random oversampling.
+2024-12-17 11:09:56,204 - INFO - Dataset loaded successfully: datasets/dataset.json
+2024-12-17 11:09:56,204 - INFO - Dataset shape: (51, 17)
+2024-12-17 11:09:56,204 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2024-12-17 11:09:56,205 - INFO - Feature engineering completed
+2024-12-17 11:09:56,213 - WARNING - Small sample size detected (min=1). Using random oversampling.
+2024-12-17 11:09:56,215 - INFO - Using 3-fold cross-validation due to sample size
+2024-12-17 11:09:57,899 - INFO - Best parameters found: {'n_neighbors': 3, 'weights': 'uniform'}
+2024-12-17 11:09:57,901 - INFO - Model Accuracy: 0.91
+2024-12-17 11:09:57,905 - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+      Barley       1.00      1.00      1.00         1
+       Beans       1.00      1.00      1.00         1
+      Cotton       1.00      1.00      1.00         2
+      Onions       1.00      1.00      1.00         2
+     Peanuts       1.00      1.00      1.00         1
+        Rice       1.00      0.00      0.00         1
+     Soybean       1.00      1.00      1.00         1
+  Sunflowers       1.00      1.00      1.00         1
+    Tomatoes       0.50      1.00      0.67         1
+
+    accuracy                           0.91        11
+   macro avg       0.94      0.89      0.85        11
+weighted avg       0.95      0.91      0.88        11
+
+2024-12-17 11:09:57,907 - INFO - Saved scaler to pkl/crop_recommendation_scaler.pkl
+2024-12-17 11:09:57,909 - INFO - Saved model to pkl/crop_recommendation_model.pkl
+2024-12-17 11:09:57,910 - INFO - Saved features to pkl/crop_recommendation_features.pkl
