@@ -1,0 +1,106 @@
+{
+  "barley": {
+    "water_requirement": 26.0,
+    "nitrogen": 80.0,
+    "phosphorus": 93.75,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 7.0
+  },
+  "beans": {
+    "water_requirement": 22.0,
+    "nitrogen": 80.0,
+    "phosphorus": 96.57,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 6.0
+  },
+  "carrots": {
+    "water_requirement": 18.0,
+    "nitrogen": 80.0,
+    "phosphorus": 104.57,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 5.0
+  },
+  "cotton": {
+    "water_requirement": 20.0,
+    "nitrogen": 80.0,
+    "phosphorus": 98.75,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 7.0
+  },
+  "oats": {
+    "water_requirement": 25.0,
+    "nitrogen": 80.0,
+    "phosphorus": 92.5,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 7.0
+  },
+  "onions": {
+    "water_requirement": 19.0,
+    "nitrogen": 80.0,
+    "phosphorus": 102.33,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 6.0
+  },
+  "peanuts": {
+    "water_requirement": 23.0,
+    "nitrogen": 80.0,
+    "phosphorus": 95.0,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 6.0
+  },
+  "potatoes": {
+    "water_requirement": 17.0,
+    "nitrogen": 80.0,
+    "phosphorus": 103.0,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 5.0
+  },
+  "rice": {
+    "water_requirement": 21.0,
+    "nitrogen": 80.0,
+    "phosphorus": 95.0,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 5.5
+  },
+  "soybean": {
+    "water_requirement": 24.0,
+    "nitrogen": 80.0,
+    "phosphorus": 106.12,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 8.0
+  },
+  "sugarcane": {
+    "water_requirement": 27.0,
+    "nitrogen": 80.0,
+    "phosphorus": 105.0,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 8.0
+  },
+  "sunflowers": {
+    "water_requirement": 21.0,
+    "nitrogen": 80.0,
+    "phosphorus": 101.25,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 6.0
+  },
+  "tomatoes": {
+    "water_requirement": 21.0,
+    "nitrogen": 80.0,
+    "phosphorus": 97.67,
+    "potassium": 40.0,
+    "ph": 6.5,
+    "estimated_yield": 7.0
+  }
+}

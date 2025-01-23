@@ -1,2 +1,13 @@
 2025-01-22 22:56:31,633 - ERROR - Error loading dataset: [Errno 2] No such file or directory: 'backend/datasets/newdataset.csv'
 2025-01-22 22:56:31,633 - ERROR - Pipeline failed: [Errno 2] No such file or directory: 'backend/datasets/newdataset.csv'
+2025-01-23 09:15:49,013 - ERROR - Error loading dataset: [Errno 2] No such file or directory: 'backend/datasets/newdataset.csv'
+2025-01-23 09:15:49,014 - ERROR - Error in model retraining: [Errno 2] No such file or directory: 'backend/datasets/newdataset.csv'
+2025-01-23 09:16:09,577 - WARNING - Found 100 invalid values in temperature
+2025-01-23 09:16:09,581 - ERROR - Error loading dataset: [Errno 2] No such file or directory: 'pkl/soil_type_encoder.pkl'
+2025-01-23 09:16:09,581 - ERROR - Error in model retraining: [Errno 2] No such file or directory: 'pkl/soil_type_encoder.pkl'
+2025-01-23 09:19:19,427 - WARNING - Found 100 invalid values in temperature
+2025-01-23 09:19:19,431 - ERROR - Error loading dataset: [Errno 2] No such file or directory: 'pkl/soil_type_encoder.pkl'
+2025-01-23 09:19:19,431 - ERROR - Error in model retraining: [Errno 2] No such file or directory: 'pkl/soil_type_encoder.pkl'
+2025-01-23 09:21:47,592 - WARNING - Found 100 invalid values in temperature
+2025-01-23 09:21:47,596 - ERROR - Error loading dataset: [Errno 2] No such file or directory: 'pkl/soil_type_encoder.pkl'
+2025-01-23 09:21:47,596 - ERROR - Error in model retraining: [Errno 2] No such file or directory: 'pkl/soil_type_encoder.pkl'

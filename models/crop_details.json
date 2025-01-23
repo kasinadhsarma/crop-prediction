@@ -1,0 +1,167 @@
+{
+    "barley": {
+        "ph": 7.25,
+        "nitrogen": 126.5,
+        "phosphorus": 63.75,
+        "potassium": 93.75,
+        "water_requirement": 26.0,
+        "estimated_yield": 7.0,
+        "fertilizers": "Urea",
+        "pesticides": "Chlorpyrifos",
+        "diseases": "Rust"
+    },
+    "beans": {
+        "ph": 6.8,
+        "nitrogen": 133.43,
+        "phosphorus": 66.57,
+        "potassium": 96.57,
+        "water_requirement": 22.0,
+        "estimated_yield": 6.0,
+        "fertilizers": "DAP",
+        "pesticides": "Imidacloprid",
+        "diseases": "Blight"
+    },
+    "carrots": {
+        "ph": 6.3,
+        "nitrogen": 157.43,
+        "phosphorus": 78.43,
+        "potassium": 104.57,
+        "water_requirement": 18.0,
+        "estimated_yield": 5.0,
+        "fertilizers": "Ammonium Nitrate",
+        "pesticides": "Malathion",
+        "diseases": "Root Rot"
+    },
+    "corn": {
+        "ph": 6.0,
+        "nitrogen": 150.0,
+        "phosphorus": 75.0,
+        "potassium": 100.0,
+        "water_requirement": 18.0,
+        "estimated_yield": 6.0,
+        "fertilizers": "Ammonium Nitrate",
+        "pesticides": "Malathion",
+        "diseases": "Maize Lethal Necrosis"
+    },
+    "cotton": {
+        "ph": 6.5,
+        "nitrogen": 136.0,
+        "phosphorus": 68.75,
+        "potassium": 98.75,
+        "water_requirement": 20.0,
+        "estimated_yield": 7.0,
+        "fertilizers": "Calcium Nitrate",
+        "pesticides": "Diazinon",
+        "diseases": "Verticillium Wilt"
+    },
+    "oats": {
+        "ph": 7.12,
+        "nitrogen": 127.5,
+        "phosphorus": 62.5,
+        "potassium": 92.5,
+        "water_requirement": 25.0,
+        "estimated_yield": 7.0,
+        "fertilizers": "Urea",
+        "pesticides": "Chlorpyrifos",
+        "diseases": "Rust"
+    },
+    "onions": {
+        "ph": 6.52,
+        "nitrogen": 147.67,
+        "phosphorus": 73.89,
+        "potassium": 102.33,
+        "water_requirement": 19.0,
+        "estimated_yield": 6.0,
+        "fertilizers": "Ammonium Sulfate",
+        "pesticides": "Thiodicarb",
+        "diseases": "Downy Mildew"
+    },
+    "peanuts": {
+        "ph": 6.9,
+        "nitrogen": 131.0,
+        "phosphorus": 65.0,
+        "potassium": 95.0,
+        "water_requirement": 23.0,
+        "estimated_yield": 6.0,
+        "fertilizers": "DAP",
+        "pesticides": "Imidacloprid",
+        "diseases": "Blight"
+    },
+    "potatoes": {
+        "ph": 6.4,
+        "nitrogen": 156.5,
+        "phosphorus": 76.5,
+        "potassium": 103.0,
+        "water_requirement": 17.0,
+        "estimated_yield": 5.0,
+        "fertilizers": "Ammonium Nitrate",
+        "pesticides": "Malathion",
+        "diseases": "Late Blight"
+    },
+    "rice": {
+        "ph": 6.65,
+        "nitrogen": 130.0,
+        "phosphorus": 65.0,
+        "potassium": 95.0,
+        "water_requirement": 21.0,
+        "estimated_yield": 5.5,
+        "fertilizers": "Ammonium Nitrate",
+        "pesticides": "Malathion",
+        "diseases": "Blast"
+    },
+    "soybean": {
+        "ph": 7.06,
+        "nitrogen": 143.0,
+        "phosphorus": 71.12,
+        "potassium": 106.12,
+        "water_requirement": 24.0,
+        "estimated_yield": 8.0,
+        "fertilizers": "Potassium Nitrate",
+        "pesticides": "Metomil",
+        "diseases": "Asian Soybean Rust"
+    },
+    "sugarcane": {
+        "ph": 7.22,
+        "nitrogen": 141.0,
+        "phosphorus": 70.25,
+        "potassium": 105.0,
+        "water_requirement": 27.0,
+        "estimated_yield": 8.0,
+        "fertilizers": "Potassium Nitrate",
+        "pesticides": "Metomil",
+        "diseases": "Red Rot"
+    },
+    "sunflowers": {
+        "ph": 6.7,
+        "nitrogen": 146.0,
+        "phosphorus": 72.75,
+        "potassium": 101.25,
+        "water_requirement": 21.0,
+        "estimated_yield": 6.0,
+        "fertilizers": "Ammonium Sulfate",
+        "pesticides": "Thiodicarb",
+        "diseases": "Downy Mildew"
+    },
+    "tomatoes": {
+        "ph": 6.62,
+        "nitrogen": 137.67,
+        "phosphorus": 67.67,
+        "potassium": 97.67,
+        "water_requirement": 21.0,
+        "estimated_yield": 7.0,
+        "fertilizers": "Calcium Nitrate",
+        "pesticides": "Diazinon",
+        "diseases": "Bacterial Spot"
+    },
+    "wheat": {
+        "ph": 7.0,
+        "nitrogen": 120.0,
+        "phosphorus": 60.0,
+        "potassium": 90.0,
+        "water_requirement": 25.0,
+        "estimated_yield": 7.0,
+        "fertilizers": "Urea",
+        "pesticides": "Chlorpyrifos",
+        "diseases": "Rust"
+    }
+}

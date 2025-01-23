@@ -1,5 +1,5 @@
 #!/bin/bash
-curl -X POST "http://127.0.0.1:5000/predict_crop" \
+curl -X POST "http://0.0.0.0:8000/predict_crop" \
 -H "Content-Type: application/json" \
 -H "x-api-key: your_api_key_here" \
 -d '{

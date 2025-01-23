@@ -231,3 +231,238 @@ weighted avg       1.00      1.00      1.00        20
 2025-01-23 07:56:23,473 - INFO - Saved valid_ranges to pkl/crop_recommendation_valid_ranges.pkl
 2025-01-23 07:56:23,473 - INFO - Saved feature metadata to pkl/feature_metadata.json
 2025-01-23 07:56:23,473 - INFO - Pipeline completed successfully
+2025-01-23 08:34:41,174 - INFO - Soil type categories: [nan]
+2025-01-23 08:34:41,174 - INFO - Dataset loaded successfully: datasets/newdataset.csv
+2025-01-23 08:34:41,174 - INFO - Dataset shape: (101, 17)
+2025-01-23 08:34:41,174 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:34:41,179 - INFO - Feature engineering completed successfully
+2025-01-23 08:34:41,184 - WARNING - Imputed 101 missing values in temperature
+2025-01-23 08:34:41,186 - WARNING - Imputed 101 missing values in humidity
+2025-01-23 08:34:41,187 - WARNING - Imputed 101 missing values in rainfall
+2025-01-23 08:34:41,189 - WARNING - Imputed 101 missing values in ph
+2025-01-23 08:34:41,191 - WARNING - Imputed 101 missing values in nitrogen
+2025-01-23 08:34:41,193 - WARNING - Imputed 101 missing values in phosphorus
+2025-01-23 08:34:41,195 - WARNING - Imputed 101 missing values in potassium
+2025-01-23 08:34:41,196 - WARNING - Imputed 101 missing values in temp_humidity_index
+2025-01-23 08:34:41,198 - WARNING - Imputed 101 missing values in water_sufficiency
+2025-01-23 08:34:41,199 - WARNING - Imputed 101 missing values in ph_balance
+2025-01-23 08:34:41,201 - ERROR - Error in model retraining: No objects to concatenate
+2025-01-23 08:34:57,718 - INFO - Soil type categories: [nan]
+2025-01-23 08:34:57,719 - INFO - Dataset loaded successfully: datasets/newdataset.csv
+2025-01-23 08:34:57,719 - INFO - Dataset shape: (101, 17)
+2025-01-23 08:34:57,719 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:34:57,723 - INFO - Feature engineering completed successfully
+2025-01-23 08:34:57,725 - WARNING - Imputed 101 missing values in temperature
+2025-01-23 08:34:57,726 - WARNING - Imputed 101 missing values in humidity
+2025-01-23 08:34:57,727 - WARNING - Imputed 101 missing values in rainfall
+2025-01-23 08:34:57,728 - WARNING - Imputed 101 missing values in ph
+2025-01-23 08:34:57,730 - WARNING - Imputed 101 missing values in nitrogen
+2025-01-23 08:34:57,731 - WARNING - Imputed 101 missing values in phosphorus
+2025-01-23 08:34:57,732 - WARNING - Imputed 101 missing values in potassium
+2025-01-23 08:34:57,733 - WARNING - Imputed 101 missing values in temp_humidity_index
+2025-01-23 08:34:57,734 - WARNING - Imputed 101 missing values in water_sufficiency
+2025-01-23 08:34:57,735 - WARNING - Imputed 101 missing values in ph_balance
+2025-01-23 08:34:57,736 - ERROR - Error in model retraining: No objects to concatenate
+2025-01-23 08:35:40,634 - INFO - Soil type categories: [nan]
+2025-01-23 08:35:40,634 - INFO - Dataset loaded successfully: datasets/newdataset.csv
+2025-01-23 08:35:40,634 - INFO - Dataset shape: (100, 17)
+2025-01-23 08:35:40,634 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:35:40,638 - INFO - Feature engineering completed successfully
+2025-01-23 08:35:40,640 - WARNING - Imputed 100 missing values in temperature
+2025-01-23 08:35:40,641 - WARNING - Imputed 100 missing values in humidity
+2025-01-23 08:35:40,641 - WARNING - Imputed 100 missing values in rainfall
+2025-01-23 08:35:40,642 - WARNING - Imputed 100 missing values in ph
+2025-01-23 08:35:40,642 - WARNING - Imputed 100 missing values in nitrogen
+2025-01-23 08:35:40,643 - WARNING - Imputed 100 missing values in phosphorus
+2025-01-23 08:35:40,643 - WARNING - Imputed 100 missing values in potassium
+2025-01-23 08:35:40,644 - WARNING - Imputed 100 missing values in temp_humidity_index
+2025-01-23 08:35:40,645 - WARNING - Imputed 100 missing values in water_sufficiency
+2025-01-23 08:35:40,645 - WARNING - Imputed 100 missing values in ph_balance
+2025-01-23 08:35:40,646 - ERROR - Error in model retraining: No objects to concatenate
+2025-01-23 08:36:54,573 - INFO - Soil type categories: ['Clay']
+2025-01-23 08:36:54,574 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:36:54,574 - INFO - Dataset shape: (100, 17)
+2025-01-23 08:36:54,574 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:36:54,578 - INFO - Feature engineering completed successfully
+2025-01-23 08:36:54,580 - ERROR - Error in model retraining: No objects to concatenate
+2025-01-23 08:38:39,009 - INFO - Soil type categories: ['Clay']
+2025-01-23 08:38:39,009 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:38:39,009 - INFO - Dataset shape: (100, 17)
+2025-01-23 08:38:39,009 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:38:39,013 - INFO - Feature engineering completed successfully
+2025-01-23 08:38:39,015 - INFO - Balanced dataset shape: (100, 21)
+2025-01-23 08:38:39,015 - INFO - Class distribution after balancing:
+Series([], Name: count, dtype: int64)
+2025-01-23 08:38:39,015 - ERROR - Error in model retraining: Input y contains NaN.
+2025-01-23 08:40:05,596 - INFO - Soil type categories: ['Clay']
+2025-01-23 08:40:05,604 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:40:05,604 - INFO - Dataset shape: (0, 17)
+2025-01-23 08:40:05,604 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:40:05,609 - INFO - Feature engineering completed successfully
+2025-01-23 08:40:05,610 - INFO - Balanced dataset shape: (0, 21)
+2025-01-23 08:40:05,611 - INFO - Class distribution after balancing:
+Series([], Name: count, dtype: int64)
+2025-01-23 08:40:05,611 - ERROR - Error in model retraining: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+2025-01-23 08:41:21,069 - INFO - Soil type categories: []
+2025-01-23 08:41:21,070 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:41:21,070 - INFO - Dataset shape: (0, 17)
+2025-01-23 08:41:21,070 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:41:21,074 - INFO - Feature engineering completed successfully
+2025-01-23 08:41:21,076 - INFO - Balanced dataset shape: (0, 21)
+2025-01-23 08:41:21,077 - INFO - Class distribution after balancing:
+Series([], Name: count, dtype: int64)
+2025-01-23 08:41:21,077 - ERROR - Error in model retraining: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+2025-01-23 08:42:28,010 - INFO - Soil type categories: []
+2025-01-23 08:42:28,011 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:42:28,012 - INFO - Dataset shape: (0, 17)
+2025-01-23 08:42:28,012 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:42:28,016 - INFO - Feature engineering completed successfully
+2025-01-23 08:42:28,018 - INFO - Balanced dataset shape: (0, 21)
+2025-01-23 08:42:28,018 - INFO - Class distribution after balancing:
+Series([], Name: count, dtype: int64)
+2025-01-23 08:42:28,018 - ERROR - Error in model retraining: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+2025-01-23 08:45:12,314 - INFO - Soil type categories: []
+2025-01-23 08:45:12,316 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:45:12,316 - INFO - Dataset shape: (0, 17)
+2025-01-23 08:45:12,316 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:45:12,319 - INFO - Feature engineering completed successfully
+2025-01-23 08:45:12,321 - INFO - Balanced dataset shape: (0, 21)
+2025-01-23 08:45:12,322 - INFO - Class distribution after balancing:
+Series([], Name: count, dtype: int64)
+2025-01-23 08:45:12,322 - ERROR - Error in model retraining: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+2025-01-23 08:47:15,934 - INFO - Soil type categories: []
+2025-01-23 08:47:15,936 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:47:15,936 - INFO - Dataset shape: (0, 17)
+2025-01-23 08:47:15,936 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:47:15,940 - INFO - Feature engineering completed successfully
+2025-01-23 08:47:15,941 - INFO - Balanced dataset shape: (0, 21)
+2025-01-23 08:47:15,942 - INFO - Class distribution after balancing:
+Series([], Name: count, dtype: int64)
+2025-01-23 08:47:15,942 - ERROR - Error in model retraining: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+2025-01-23 08:51:08,200 - WARNING - Found 100 invalid values in temperature
+2025-01-23 08:51:08,205 - INFO - Soil type categories: ['0', '1', '18', '2', '25', '3', '4', '5', '6', '7', '8', '9']
+2025-01-23 08:51:08,207 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:51:08,207 - INFO - Dataset shape: (100, 17)
+2025-01-23 08:51:08,207 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:51:08,211 - INFO - Feature engineering completed successfully
+2025-01-23 08:51:08,215 - WARNING - SMOTE failed, using original data: Expected n_neighbors <= n_samples,  but n_samples = 2, n_neighbors = 6
+2025-01-23 08:51:08,215 - INFO - Balanced dataset shape: (100, 21)
+2025-01-23 08:51:08,216 - INFO - Class distribution after balancing:
+suggested_crop
+\ttomatoes\tcalcium nitrate\tdiazinon\tbacterial spot\t        9
+\tonions\tammonium sulfate\tthiodicarb\tdowny mildew\t         9
+\tsoybean\tpotassium nitrate\tmetomil\tasian soybean rust\t    8
+\tbarley\turea\tchlorpyrifos\trust\t                           8
+\tpotatoes\tammonium nitrate\tmalathion\tlate blight\t         8
+\tpeanuts\tdap\timidacloprid\tblight\t                         8
+\tsugarcane\tpotassium nitrate\tmetomil\tred rot\t             8
+\tcotton\tcalcium nitrate\tdiazinon\tverticillium wilt\t       8
+\tsunflowers\tammonium sulfate\tthiodicarb\tdowny mildew\t     8
+\toats\turea\tchlorpyrifos\trust\t                             8
+\tcarrots\tammonium nitrate\tmalathion\troot rot\t             7
+\tbeans\tdap\timidacloprid\tblight\t                           7
+\t                                                             2
+\trice\tammonium nitrate\tmalathion\tblast\t                   1
+\trice\tdap\timidacloprid\tblast\t                             1
+Name: count, dtype: int64
+2025-01-23 08:51:08,217 - ERROR - Error in model retraining: The least populated class in y has only 1 member, which is too few. The minimum number of groups for any class cannot be less than 2.
+2025-01-23 08:52:26,691 - WARNING - Found 100 invalid values in temperature
+2025-01-23 08:52:26,695 - INFO - Soil type categories: ['0', '1', '18', '2', '25', '3', '4', '5', '6', '7', '8', '9']
+2025-01-23 08:52:26,698 - INFO - Unique crops after cleaning: ['barley urea chlorpyrifos rust', 'beans dap imidacloprid blight', 'carrots ammonium nitrate malathion root rot', 'cotton calcium nitrate diazinon verticillium wilt', 'oats urea chlorpyrifos rust', 'onions ammonium sulfate thiodicarb downy mildew', 'peanuts dap imidacloprid blight', 'potatoes ammonium nitrate malathion late blight', 'rice ammonium nitrate malathion blast', 'rice dap imidacloprid blast', 'soybean potassium nitrate metomil asian soybean rust', 'sugarcane potassium nitrate metomil red rot', 'sunflowers ammonium sulfate thiodicarb downy mildew', 'tomatoes calcium nitrate diazinon bacterial spot']
+2025-01-23 08:52:26,698 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:52:26,698 - INFO - Dataset shape: (98, 17)
+2025-01-23 08:52:26,698 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield']
+2025-01-23 08:52:26,702 - INFO - Feature engineering completed successfully
+2025-01-23 08:52:26,742 - WARNING - SMOTE failed, using original data: Expected n_neighbors <= n_samples,  but n_samples = 1, n_neighbors = 6
+2025-01-23 08:52:26,742 - INFO - Balanced dataset shape: (98, 21)
+2025-01-23 08:52:26,743 - INFO - Class distribution after balancing:
+suggested_crop
+tomatoes calcium nitrate diazinon bacterial spot        9
+onions ammonium sulfate thiodicarb downy mildew         9
+soybean potassium nitrate metomil asian soybean rust    8
+barley urea chlorpyrifos rust                           8
+potatoes ammonium nitrate malathion late blight         8
+peanuts dap imidacloprid blight                         8
+sugarcane potassium nitrate metomil red rot             8
+cotton calcium nitrate diazinon verticillium wilt       8
+sunflowers ammonium sulfate thiodicarb downy mildew     8
+oats urea chlorpyrifos rust                             8
+carrots ammonium nitrate malathion root rot             7
+beans dap imidacloprid blight                           7
+rice ammonium nitrate malathion blast                   1
+rice dap imidacloprid blast                             1
+Name: count, dtype: int64
+2025-01-23 08:52:26,744 - ERROR - Error in model retraining: The least populated class in y has only 1 member, which is too few. The minimum number of groups for any class cannot be less than 2.
+2025-01-23 08:54:44,655 - WARNING - Found 100 invalid values in temperature
+2025-01-23 08:54:44,660 - INFO - Soil type categories: ['0', '1', '18', '2', '25', '3', '4', '5', '6', '7', '8', '9']
+2025-01-23 08:54:44,663 - INFO - Unique crops after cleaning: ['barley', 'beans', 'carrots', 'cotton', 'oats', 'onions', 'peanuts', 'potatoes', 'rice', 'soybean', 'sugarcane', 'sunflowers', 'tomatoes']
+2025-01-23 08:54:44,663 - INFO - Dataset loaded successfully: backend/datasets/newdataset.csv
+2025-01-23 08:54:44,663 - INFO - Dataset shape: (98, 19)
+2025-01-23 08:54:44,663 - INFO - Available columns: ['field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 'soil_type', 'ph', 'water_requirement', 'suggested_crop', 'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 'nitrogen', 'phosphorus', 'potassium', 'estimated_yield', 'fertilizer', 'pesticide']
+2025-01-23 08:54:44,667 - INFO - Feature engineering completed successfully
+2025-01-23 08:54:44,700 - WARNING - SMOTE failed, using original data: Expected n_neighbors <= n_samples,  but n_samples = 2, n_neighbors = 6
+2025-01-23 08:54:44,700 - INFO - Balanced dataset shape: (98, 23)
+2025-01-23 08:54:44,701 - INFO - Class distribution after balancing:
+suggested_crop
+tomatoes      9
+onions        9
+soybean       8
+barley        8
+potatoes      8
+peanuts       8
+sugarcane     8
+cotton        8
+sunflowers    8
+oats          8
+carrots       7
+beans         7
+rice          2
+Name: count, dtype: int64
+2025-01-23 08:54:44,705 - INFO - Training data shape after processing: (78, 12)
+2025-01-23 08:54:44,706 - INFO - Training class distribution:
+suggested_crop
+onions        7
+cotton        7
+sunflowers    7
+tomatoes      7
+sugarcane     6
+potatoes      6
+soybean       6
+carrots       6
+oats          6
+barley        6
+beans         6
+peanuts       6
+rice          2
+Name: count, dtype: int64
+2025-01-23 08:54:46,499 - INFO - Best parameters: {'metric': 'euclidean', 'n_neighbors': 3, 'weights': 'distance'}
+2025-01-23 08:54:46,499 - INFO - Best cross-validation score: 0.9750
+2025-01-23 08:54:46,500 - INFO - 
+Model Accuracy: 1.0000
+2025-01-23 08:54:46,503 - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+      barley       1.00      1.00      1.00         2
+       beans       1.00      1.00      1.00         1
+     carrots       1.00      1.00      1.00         1
+      cotton       1.00      1.00      1.00         1
+        oats       1.00      1.00      1.00         2
+      onions       1.00      1.00      1.00         2
+     peanuts       1.00      1.00      1.00         2
+    potatoes       1.00      1.00      1.00         2
+     soybean       1.00      1.00      1.00         2
+   sugarcane       1.00      1.00      1.00         2
+  sunflowers       1.00      1.00      1.00         1
+    tomatoes       1.00      1.00      1.00         2
+
+    accuracy                           1.00        20
+   macro avg       1.00      1.00      1.00        20
+weighted avg       1.00      1.00      1.00        20
+
+2025-01-23 08:54:46,505 - INFO - Saved scaler to pkl/crop_recommendation_scaler.pkl
+2025-01-23 08:54:46,506 - INFO - Saved model to pkl/crop_recommendation_model.pkl
+2025-01-23 08:54:46,507 - INFO - Saved features to pkl/crop_recommendation_features.pkl
+2025-01-23 08:54:46,507 - INFO - Saved valid_ranges to pkl/crop_recommendation_valid_ranges.pkl
+2025-01-23 08:54:46,507 - INFO - Saved feature metadata to pkl/feature_metadata.json
+2025-01-23 08:54:46,513 - INFO - Model retraining completed successfully
