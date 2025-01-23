@@ -18,39 +18,38 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # Update CORS configuration
+origins = [
+    "http://localhost:3000",     # Next.js development server
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",     # FastAPI development server
+    "http://127.0.0.1:8000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for simplicity in development
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"],
-    allow_headers=["Content-Type", "Accept", "x-api-key", "Authorization"],
+    allow_methods=["*"],
+    allow_headers=["*"],
     expose_headers=["*"],
     max_age=3600
 )
 
-MODELS_DIR = 'pkl'
+MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'pkl')
 API_KEY = os.getenv('API_KEY', 'your_api_key_here')  # Default value if env var not set
 
 # Load the dataset and create mapping
 try:
-    # Load the JSON dataset
-    dataset_path = 'datasets/dataset.json'
+    # Load the CSV dataset with proper headers
+    dataset_path = os.path.join(os.path.dirname(__file__), 'datasets/newdataset.csv')
     if not os.path.exists(dataset_path):
         raise FileNotFoundError(f"Dataset file '{dataset_path}' not found")
     
-    crop_data = pd.read_json(dataset_path)
+    crop_data = pd.read_csv(dataset_path)  # Removed names=expected_columns
     logger.info(f"Crop data shape: {crop_data.shape}")
     
-    # Simplify column names
-    crop_data.columns = [
-        'field_id', 'land', 'temperature', 'humidity', 'rainfall', 'budget', 
-        'soil_type', 'ph', 'water_requirement', 'suggested_crop', 
-        'suggested_fertilizers', 'suggested_pesticides', 'potential_diseases', 
-        'nitrogen', 'phosphorus', 'potassium', 'estimated_yield'
-    ]
-    
-    # Standardize crop names to lowercase
-    crop_data['suggested_crop'] = crop_data['suggested_crop'].str.lower()
+    # Ensure 'suggested_crop' is a string and standardize to lowercase
+    crop_data['suggested_crop'] = crop_data['suggested_crop'].astype(str).str.lower()
     
     # Preprocess the dataset
     crop_mapping = crop_data.groupby('suggested_crop').agg({
@@ -99,7 +98,8 @@ class CropInput(BaseModel):
         return v
 
 def validate_api_key(api_key: str = Header(None)) -> bool:
-    return api_key == API_KEY
+    # In development, accept 'your_api_key_here' or the environment variable if set
+    return api_key in [API_KEY, 'your_api_key_here'] or os.getenv('API_KEY') is None
 
 # Load models
 try:
@@ -238,14 +238,13 @@ async def options_predict():
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Accept, x-api-key"
     }
-    return {"status": "OK"}, 200, headers
-
+    return {"status": "OK"}
 
 if __name__ == "__main__":
     uvicorn.run(
-        "backend.croppredection:app",
+        "croppredection:app",
         host="0.0.0.0",
-        port=8001,  # Changed to 8001
+        port=8000,
         reload=True,
         log_level="info"
     )

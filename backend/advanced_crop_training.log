@@ -1,0 +1,6 @@
+2025-01-22 22:35:21,806 - ERROR - Error loading data: [Errno 2] No such file or directory: 'crop_data.csv'
+2025-01-22 22:36:20,447 - ERROR - Error loading data: [Errno 2] No such file or directory: 'backend/datasets/newdataset.csv'
+2025-01-22 22:36:37,295 - ERROR - Error loading data: [Errno 2] No such file or directory: 'backend/datasets/newdataset.csv'
+2025-01-22 22:36:45,878 - INFO - Data loaded successfully: (100, 17)
+2025-01-22 22:36:45,882 - INFO - Advanced features created successfully
+2025-01-22 22:36:45,883 - ERROR - Error training model: The least populated class in y has only 1 member, which is too few. The minimum number of groups for any class cannot be less than 2.

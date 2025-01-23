@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from imblearn.over_sampling import SMOTE
 import joblib
+import json
 
 # Enhanced logging configuration
 logging.basicConfig(
@@ -21,12 +22,6 @@ logger = logging.getLogger(__name__)
 
 class CropRecommendationPreprocessor:
     def __init__(self, dataset_path):
-        """
-        Initialize the preprocessor with the dataset path
-        
-        Args:
-            dataset_path (str): Path to the JSON dataset
-        """
         self.dataset_path = dataset_path
         self.data = None
         self.features = None
@@ -34,248 +29,261 @@ class CropRecommendationPreprocessor:
         self.y = None
         self.scaler = StandardScaler()
         self.label_encoder = LabelEncoder()
+        self.soil_type_encoder = LabelEncoder()
+        
+        # Define valid ranges for features
+        self.valid_ranges = {
+            'temperature': (-50, 50),
+            'humidity': (0, 100),
+            'rainfall': (0, 5000),
+            'ph': (0, 14),
+            'nitrogen': (0, 300),
+            'phosphorus': (0, 300),
+            'potassium': (0, 300),
+            'water_requirement': (0, 10000)
+        }
     
     def load_data(self):
-        """
-        Load and validate the dataset
-        """
+        """Load and validate the dataset with enhanced error handling"""
         try:
-            # Read JSON dataset
-            self.data = pd.read_json(self.dataset_path)
+            file_extension = self.dataset_path.split('.')[-1].lower()
             
-            # Convert numeric columns from string to float
-            numeric_columns = ['land', 'temperature', 'humidity', 
-                               'rainfall', 'ph', 'water_requirement',
-                               'nitrogen', 'phosphorus', 'potassium']
+            if file_extension == 'json':
+                self.data = pd.read_json(self.dataset_path)
+            elif file_extension == 'csv':
+                self.data = pd.read_csv(self.dataset_path, sep='\t')
+            else:
+                raise ValueError(f"Unsupported file format: {file_extension}")
+            
+            # Standardize column names
+            self.data.columns = self.data.columns.str.lower().str.strip()
+            
+            # Convert numeric columns
+            numeric_columns = [
+                'land', 'temperature', 'humidity', 'rainfall', 'ph', 
+                'water_requirement', 'nitrogen', 'phosphorus', 'potassium'
+            ]
             
             for col in numeric_columns:
                 if col in self.data.columns:
                     self.data[col] = pd.to_numeric(self.data[col], errors='coerce')
+                    
+                    # Validate ranges
+                    if col in self.valid_ranges:
+                        min_val, max_val = self.valid_ranges[col]
+                        invalid_mask = (self.data[col] < min_val) | (self.data[col] > max_val)
+                        if invalid_mask.any():
+                            logger.warning(f"Found {invalid_mask.sum()} invalid values in {col}")
+                            # Replace invalid values with median of valid values
+                            valid_median = self.data.loc[~invalid_mask, col].median()
+                            self.data.loc[invalid_mask, col] = valid_median
+            
+            # Encode soil type
+            if 'soil_type' in self.data.columns:
+                self.data['soil_type'] = self.soil_type_encoder.fit_transform(self.data['soil_type'])
+                joblib.dump(self.soil_type_encoder, 'pkl/soil_type_encoder.pkl')
+                logger.info(f"Soil type categories: {list(self.soil_type_encoder.classes_)}")
             
             logger.info(f"Dataset loaded successfully: {self.dataset_path}")
             logger.info(f"Dataset shape: {self.data.shape}")
             logger.info(f"Available columns: {self.data.columns.tolist()}")
             
-        except FileNotFoundError:
-            logger.error("Dataset file not found")
+        except Exception as e:
+            logger.error(f"Error loading dataset: {str(e)}")
             raise
     
     def feature_engineering(self):
-        """
-        Create additional features and perform feature engineering
-        Handles potential column name variations
-        """
-        # Flexible column name matching
+        """Enhanced feature engineering with error handling"""
         def find_column(pattern):
             matches = [col for col in self.data.columns if pattern.lower() in col.lower()]
             return matches[0] if matches else None
-        
+
         # Find columns dynamically
-        nitrogen_col = find_column('nitrogen')
-        phosphorus_col = find_column('phosphorus')
-        potassium_col = find_column('potassium')
-        temp_col = find_column('temperature')
-        humidity_col = find_column('humidity')
-        rainfall_col = find_column('rainfall')
-        water_req_col = find_column('water')
-        land_col = find_column('land')
-        budget_col = find_column('budget')
-        crop_col = find_column('crop')
-        
-        # Validate critical columns are found
-        if not all([nitrogen_col, phosphorus_col, potassium_col, 
-                    temp_col, humidity_col, rainfall_col, 
-                    water_req_col, land_col, budget_col, crop_col]):
-            logger.error("Missing critical columns. Please check your dataset.")
-            raise ValueError("Essential columns not found in the dataset")
-        
-        # Calculate nutrient balance ratio
+        required_cols = {
+            'nitrogen': find_column('nitrogen'),
+            'phosphorus': find_column('phosphorus'),
+            'potassium': find_column('potassium'),
+            'temperature': find_column('temperature'),
+            'humidity': find_column('humidity'),
+            'rainfall': find_column('rainfall'),
+            'water': find_column('water'),
+            'ph': find_column('ph')
+        }
+
+        missing_cols = [k for k, v in required_cols.items() if v is None]
+        if missing_cols:
+            raise ValueError(f"Missing critical columns: {', '.join(missing_cols)}")
+
         try:
-            self.data['nutrient_balance_ratio'] = (
-                self.data[nitrogen_col] + 
-                self.data[phosphorus_col] + 
-                self.data[potassium_col]
-            ) / 3
-        except Exception as e:
-            logger.error(f"Error calculating nutrient balance ratio: {e}")
-            self.data['nutrient_balance_ratio'] = 0
-        
-        # Temperature and humidity interaction feature
-        try:
-            self.data['temp_humidity_stress'] = (
-                self.data[temp_col] / 
-                (self.data[humidity_col] + 1)  # Avoid division by zero
+            # NPK ratio
+            self.data['npk_ratio'] = (
+                self.data[required_cols['nitrogen']] / 
+                (self.data[required_cols['phosphorus']] + self.data[required_cols['potassium']])
+            ).fillna(0)
+            
+            # Temperature-humidity index
+            self.data['temp_humidity_index'] = (
+                0.8 * self.data[required_cols['temperature']] + 
+                (self.data[required_cols['humidity']] / 100) * 
+                (self.data[required_cols['temperature']] - 14.4)
             )
+            
+            # Water sufficiency ratio
+            self.data['water_sufficiency'] = (
+                self.data[required_cols['rainfall']] / 
+                self.data[required_cols['water']].replace(0, 1)
+            ).clip(0, 1)
+            
+            # pH balance indicator
+            optimal_ph = 7.0
+            self.data['ph_balance'] = (
+                -(self.data[required_cols['ph']] - optimal_ph).abs() + 7
+            ).clip(0, 7)
+            
         except Exception as e:
-            logger.error(f"Error calculating temp-humidity stress: {e}")
-            self.data['temp_humidity_stress'] = 0
-        
-        # Water stress index
-        try:
-            self.data['water_stress_index'] = (
-                self.data[rainfall_col] / 
-                (self.data[water_req_col] + 1)  # Avoid division by zero
-            )
-        except Exception as e:
-            logger.error(f"Error calculating water stress index: {e}")
-            self.data['water_stress_index'] = 0
-        
-        logger.info("Feature engineering completed")
+            logger.error(f"Error in feature engineering: {str(e)}")
+            raise
+            
+        logger.info("Feature engineering completed successfully")
     
     def prepare_features(self):
-        """
-        Select and prepare features for model training
-        Uses dynamic column finding
-        """
-        # Flexible column finding
-        def find_column(pattern):
-            matches = [col for col in self.data.columns if pattern.lower() in col.lower()]
-            return matches[0] if matches else None
-        
-        # Dynamically find columns
-        features_to_use = [
-            find_column('temperature'),
-            find_column('humidity'),
-            find_column('ph'),
-            find_column('rainfall'),
-            find_column('land'),
-            find_column('budget'),
-            find_column('nitrogen'),
-            find_column('phosphorus'),
-            find_column('potassium'),
-            'nutrient_balance_ratio',
-            'temp_humidity_stress', 
-            'water_stress_index'
+        """Prepare features with enhanced validation"""
+        base_features = [
+            'temperature', 'humidity', 'rainfall', 'ph', 'nitrogen',
+            'phosphorus', 'potassium', 'soil_type'
         ]
         
-        # Remove any None values
-        self.features = [f for f in features_to_use if f is not None]
+        engineered_features = [
+            'npk_ratio', 'temp_humidity_index', 
+            'water_sufficiency', 'ph_balance'
+        ]
         
-        # Handle missing values
+        self.features = base_features + engineered_features
+        
+        # Validate all required features exist
+        missing_features = [f for f in self.features if f not in self.data.columns]
+        if missing_features:
+            raise ValueError(f"Missing required features: {missing_features}")
+        
         self.X = self.data[self.features]
-        crop_col = find_column('crop')
+        crop_col = [col for col in self.data.columns if 'crop' in col.lower()][0]
         self.y = self.data[crop_col]
         
-        if self.X.isnull().any().any():
-            logger.warning("Missing values detected. Imputing with mean.")
-            self.X = self.X.fillna(self.X.mean())
+        # Handle missing values with median imputation
+        for col in self.X.columns:
+            if self.X[col].isnull().any():
+                median_val = self.X[col].median()
+                self.X[col] = self.X[col].fillna(median_val)
+                logger.warning(f"Imputed {self.X[col].isnull().sum()} missing values in {col}")
     
     def preprocess_data(self, test_size=0.2, random_state=42):
-        """
-        Split and preprocess data with handling for small sample sizes
-        """
-        # Split the data
+        """Enhanced data preprocessing with validation"""
+        # Define crop column
+        crop_col = [col for col in self.data.columns if 'crop' in col.lower()][0]
+
+        # Ensure each class has at least 2 samples
+        class_counts = self.y.value_counts()
+        rare_classes = class_counts[class_counts < 2].index
+        if not rare_classes.empty:
+            logger.warning(f"Classes with fewer than 2 samples: {list(rare_classes)}")
+            self.data = self.data[~self.data[crop_col].isin(rare_classes)]
+            self.X = self.data[self.features]
+            self.y = self.data[crop_col]
+
         X_train, X_test, y_train, y_test = train_test_split(
-            self.X, self.y, 
-            test_size=test_size, 
+            self.X, self.y,
+            test_size=test_size,
             random_state=random_state,
-            shuffle=True
+            stratify=self.y
         )
         
         # Scale features
         X_train_scaled = self.scaler.fit_transform(X_train)
         X_test_scaled = self.scaler.transform(X_test)
         
-        # Check class distribution
-        class_counts = pd.Series(y_train).value_counts()
-        min_samples = class_counts.min()
-        
-        # Only apply SMOTE if we have enough samples
-        if min_samples >= 6:
+        # Apply SMOTE for better class balance
+        try:
             smote = SMOTE(random_state=random_state)
             X_train_balanced, y_train_balanced = smote.fit_resample(X_train_scaled, y_train)
-        else:
-            # For small datasets, use simple random oversampling
-            logger.warning(f"Small sample size detected (min={min_samples}). Using random oversampling.")
-            from imblearn.over_sampling import RandomOverSampler
-            ros = RandomOverSampler(random_state=random_state)
-            X_train_balanced, y_train_balanced = ros.fit_resample(X_train_scaled, y_train)
+            logger.info("Successfully applied SMOTE balancing")
+        except ValueError as e:
+            logger.warning(f"SMOTE failed, using original data: {str(e)}")
+            X_train_balanced, y_train_balanced = X_train_scaled, y_train
         
         return X_train_balanced, y_train_balanced, X_test_scaled, y_test
     
     def train_model(self, X_train, y_train):
-        """
-        Train model with adjusted cross-validation for small datasets
-        """
-        try:
-            # Calculate minimum samples per class
-            class_counts = pd.Series(y_train).value_counts()
-            min_samples = class_counts.min()
-            
-            # Adjust cross-validation splits based on minimum samples
-            n_splits = min(3, min_samples)  # Use max 3 splits or fewer if needed
-            logger.info(f"Using {n_splits}-fold cross-validation due to sample size")
-            
-            # Define parameter grid
-            param_grid = {
-                'n_neighbors': [3, 5],  # Reduced parameter space
-                'weights': ['uniform', 'distance']
-            }
-            
-            # Configure GridSearchCV with reduced splits
-            grid_search = GridSearchCV(
-                KNeighborsClassifier(),
-                param_grid,
-                cv=n_splits,
-                scoring='accuracy',
-                n_jobs=-1
-            )
-            
-            # Fit model
-            grid_search.fit(X_train, y_train)
-            logger.info(f"Best parameters found: {grid_search.best_params_}")
-            
-            return grid_search.best_estimator_
-            
-        except Exception as e:
-            logger.error(f"Error during model training: {str(e)}")
-            raise
-    
-    def evaluate_model(self, model, X_test, y_test):
-        """
-        Evaluate model performance
-        """
-        y_pred = model.predict(X_test)
-        accuracy = accuracy_score(y_test, y_pred)
+        """Enhanced model training with cross-validation"""
+        param_grid = {
+            'n_neighbors': [3, 5, 7],
+            'weights': ['uniform', 'distance'],
+            'metric': ['euclidean', 'manhattan']
+        }
         
-        logger.info(f"Model Accuracy: {accuracy:.2f}")
-        logger.info("\nClassification Report:\n" + 
-                    classification_report(y_test, y_pred, zero_division=1))
+        cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+        
+        grid_search = GridSearchCV(
+            KNeighborsClassifier(),
+            param_grid,
+            cv=cv,
+            scoring='accuracy',
+            n_jobs=-1
+        )
+        
+        grid_search.fit(X_train, y_train)
+        
+        logger.info(f"Best parameters: {grid_search.best_params_}")
+        logger.info(f"Best cross-validation score: {grid_search.best_score_:.4f}")
+        
+        return grid_search.best_estimator_
     
     def save_artifacts(self, model, filename_prefix='crop_recommendation'):
-        """
-        Save preprocessing and model artifacts
-        """
+        """Save model artifacts and feature information"""
         artifacts = {
             'scaler': self.scaler,
             'model': model,
-            'features': self.features
+            'features': self.features,
+            'valid_ranges': self.valid_ranges
         }
         
         for name, artifact in artifacts.items():
             filename = f'pkl/{filename_prefix}_{name}.pkl'
             joblib.dump(artifact, filename)
             logger.info(f"Saved {name} to {filename}")
-    
-    def run_pipeline(self):
-        """
-        Run the entire preprocessing and training pipeline
-        """
-        self.load_data()
-        self.feature_engineering()
-        self.prepare_features()
         
-        # Preprocess and train
-        X_train, y_train, X_test, y_test = self.preprocess_data()
-        model = self.train_model(X_train, y_train)
+        # Save feature metadata as JSON for frontend validation
+        feature_metadata = {
+            'features': self.features,
+            'valid_ranges': self.valid_ranges,
+            'soil_types': list(self.soil_type_encoder.classes_)
+        }
         
-        # Evaluate and save
-        self.evaluate_model(model, X_test, y_test)
-        self.save_artifacts(model)
+        with open('pkl/feature_metadata.json', 'w') as f:
+            json.dump(feature_metadata, f, indent=2)
+            logger.info("Saved feature metadata to pkl/feature_metadata.json")
 
 def main():
-    preprocessor = CropRecommendationPreprocessor('datasets/dataset.json')
-    preprocessor.run_pipeline()
+    preprocessor = CropRecommendationPreprocessor('backend/datasets/newdataset.csv')
+    try:
+        preprocessor.load_data()
+        preprocessor.feature_engineering()
+        preprocessor.prepare_features()
+        
+        X_train, y_train, X_test, y_test = preprocessor.preprocess_data()
+        model = preprocessor.train_model(X_train, y_train)
+        
+        # Final evaluation
+        y_pred = model.predict(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        logger.info(f"\nModel Accuracy: {accuracy:.4f}")
+        logger.info("\nClassification Report:\n" + classification_report(y_test, y_pred))
+        
+        preprocessor.save_artifacts(model)
+        logger.info("Pipeline completed successfully")
+        
+    except Exception as e:
+        logger.error(f"Pipeline failed: {str(e)}")
+        raise
 
 if __name__ == '__main__':
     main()

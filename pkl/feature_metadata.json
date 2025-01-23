@@ -1,0 +1,55 @@
+{
+  "features": [
+    "temperature",
+    "humidity",
+    "rainfall",
+    "ph",
+    "nitrogen",
+    "phosphorus",
+    "potassium",
+    "soil_type",
+    "npk_ratio",
+    "temp_humidity_index",
+    "water_sufficiency",
+    "ph_balance"
+  ],
+  "valid_ranges": {
+    "temperature": [
+      -50,
+      50
+    ],
+    "humidity": [
+      0,
+      100
+    ],
+    "rainfall": [
+      0,
+      5000
+    ],
+    "ph": [
+      0,
+      14
+    ],
+    "nitrogen": [
+      0,
+      300
+    ],
+    "phosphorus": [
+      0,
+      300
+    ],
+    "potassium": [
+      0,
+      300
+    ],
+    "water_requirement": [
+      0,
+      10000
+    ]
+  },
+  "soil_types": [
+    "Clay",
+    "Loam",
+    "Sandy"
+  ]
+}
