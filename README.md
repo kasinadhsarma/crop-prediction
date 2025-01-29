@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Crop Prediction System
 
 An intelligent agricultural decision support system that predicts suitable crops and provides soil management recommendations based on environmental parameters.
@@ -107,6 +106,67 @@ NEXT_PUBLIC_API_URL=http://localhost:8001
 
 - Agricultural datasets
 - ML model contributors
-=======
-# crop-prediction
->>>>>>> 422efc380502147a34e1fa1766bff856f78ba98f
+
+## CORS Configuration
+
+To set up CORS in `backend/croppredection.py`, add the following lines:
+
+```python
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+## Deploying to Vercel
+
+To deploy the application to Vercel, follow these steps:
+
+1. Install the Vercel CLI:
+
+```bash
+npm install -g vercel
+```
+
+2. Log in to Vercel:
+
+```bash
+vercel login
+```
+
+3. Deploy the application:
+
+```bash
+vercel
+```
+
+4. Set up environment variables in Vercel:
+
+```plaintext
+API_KEY=your_api_key_here
+NEXT_PUBLIC_API_URL=https://your-backend-url
+```
+
+5. Update `next.config.ts` to handle CORS for Vercel deployment:
+
+```javascript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
+```
