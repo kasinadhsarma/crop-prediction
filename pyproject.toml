@@ -1,7 +1,16 @@
 [build-system]
-requires = ["setuptools>=42"]
+requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "crop-prediction"
 version = "0.1.0"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "joblib",
+    "pydantic"
+]

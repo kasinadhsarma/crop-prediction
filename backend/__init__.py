@@ -1,11 +1,19 @@
-# backend/__init__.py
+"""
+Backend package for the crop prediction application.
+This module exports the FastAPI application and its components.
+"""
 
-# Import the UserDatabase class to make it available at the package level
-from .database import UserDatabase
-from .croppredection import app
+from .results import (  # noqa: F401
+    app,
+    create_app,
+    CropInput,
+    DEFAULT_CROP_DETAILS
+)
 
-# Define the list of objects to be exported when using `from backend import *`
+# Export these symbols for public use
 __all__ = [
-    "UserDatabase",
-    "app" # Add the name of the class or other objects you want to export
+    "app",
+    "create_app",
+    "CropInput",
+    "DEFAULT_CROP_DETAILS"
 ]

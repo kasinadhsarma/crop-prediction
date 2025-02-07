@@ -12,33 +12,31 @@ import json
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def create_app():
-    app = FastAPI()
-    
-    origins = ["*"]
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"]
-    )
-    
-    MODELS_DIR = 'models'
-    API_KEY = os.getenv('API_KEY', 'your_api_key_here')
-    
-    DEFAULT_CROP_DETAILS = {
-        'ph': 6.5,
-        'nitrogen': 80,
-        'phosphorus': 45,
-        'potassium': 40,
-        'water_requirement': 20,
-        'estimated_yield': 5.0,
-        'fertilizers': 'NPK balanced fertilizer',
-        'pesticides': 'General purpose pesticide',
-        'diseases': 'Common crop diseases'
-    }
+# Constants and default values
+MODELS_DIR = 'models'
+API_KEY = os.getenv('API_KEY', 'your_api_key_here')
 
+# Model components
+label_classes = None
+crop_mapping = None
+scaler = None
+model = None
+
+DEFAULT_CROP_DETAILS = {
+    'ph': 6.5,
+    'nitrogen': 80,
+    'phosphorus': 45,
+    'potassium': 40,
+    'water_requirement': 20,
+    'estimated_yield': 5.0,
+    'fertilizers': 'NPK balanced fertilizer',
+    'pesticides': 'General purpose pesticide',
+    'diseases': 'Common crop diseases'
+}
+
+def load_models():
+    """Load ML models and related data."""
+    global label_classes, crop_mapping, scaler, model
     try:
         with open(os.path.join(MODELS_DIR, 'label_encoder.json'), 'r') as f:
             label_classes = json.load(f)['classes']
@@ -51,51 +49,63 @@ def create_app():
         logger.error(f"Error loading models: {str(e)}")
         raise RuntimeError("Failed to load models")
 
-    class CropInput(BaseModel):
-        land: float
-        temperature: float
-        humidity: float
-        rainfall: float
-        budget: float
-        soil_type: str
+class CropInput(BaseModel):
+    land: float
+    temperature: float
+    humidity: float
+    rainfall: float
+    budget: float
+    soil_type: str
 
-        @validator('land')
-        def validate_land(cls, v):
-            if v < 0:
-                raise ValueError('Land cannot be negative')
-            return v
+    @validator('land')
+    def validate_land(cls, v):
+        if v < 0:
+            raise ValueError('Land cannot be negative')
+        return v
 
-        @validator('temperature')
-        def validate_temperature(cls, v):
-            if v < -50 or v > 50:
-                raise ValueError('Temperature must be between -50 and 50°C')
-            return v
+    @validator('temperature')
+    def validate_temperature(cls, v):
+        if v < -50 or v > 50:
+            raise ValueError('Temperature must be between -50 and 50°C')
+        return v
 
-        @validator('humidity')
-        def validate_humidity(cls, v):
-            if v < 0 or v > 100:
-                raise ValueError('Humidity must be between 0 and 100%')
-            return v
+    @validator('humidity')
+    def validate_humidity(cls, v):
+        if v < 0 or v > 100:
+            raise ValueError('Humidity must be between 0 and 100%')
+        return v
 
-        @validator('rainfall')
-        def validate_rainfall(cls, v):
-            if v < 0:
-                raise ValueError('Rainfall cannot be negative')
-            return v
+    @validator('rainfall')
+    def validate_rainfall(cls, v):
+        if v < 0:
+            raise ValueError('Rainfall cannot be negative')
+        return v
 
-        @validator('budget')
-        def validate_budget(cls, v):
-            if v < 0:
-                raise ValueError('Budget cannot be negative')
-            return v
+    @validator('budget')
+    def validate_budget(cls, v):
+        if v < 0:
+            raise ValueError('Budget cannot be negative')
+        return v
 
-        @validator('soil_type')
-        def validate_soil_type(cls, v):
-            valid_types = ["Clay", "Silt", "Sand", "Loam", "Clay_Silt", 
-                          "Sandy_Loam", "Silt_Loam", "Clay_Loam", "Loamy_Sand"]
-            if v not in valid_types:
-                raise ValueError(f'Soil type must be one of: {", ".join(valid_types)}')
-            return v
+    @validator('soil_type')
+    def validate_soil_type(cls, v):
+        valid_types = ["Clay", "Silt", "Sand", "Loam", "Clay_Silt", 
+                      "Sandy_Loam", "Silt_Loam", "Clay_Loam", "Loamy_Sand"]
+        if v not in valid_types:
+            raise ValueError(f'Soil type must be one of: {", ".join(valid_types)}')
+        return v
+
+def create_app():
+    app = FastAPI()
+    
+    origins = ["*"]
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"]
+    )
 
     @app.post('/predict_crop')
     async def predict_crop(
@@ -105,6 +115,10 @@ def create_app():
     ):
         if x_api_key not in [API_KEY, 'your_api_key_here']:
             raise HTTPException(status_code=401, detail="Invalid API key")
+
+        # Load models if not already loaded
+        if model is None:
+            load_models()
 
         try:
             soil_type_encoded = 1 if crop_input.soil_type in ["Clay", "Clay_Silt", "Clay_Loam"] else 0

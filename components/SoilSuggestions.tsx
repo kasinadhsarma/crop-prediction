@@ -20,7 +20,7 @@ export function SoilSuggestions({ phValue }: SoilSuggestionsProps) {
         const result = await getSoilSuggestions(phValue);
         setSuggestions(result);
       } catch (err) {
-        setError('Failed to fetch suggestions');
+        setError(err instanceof Error ? err.message : 'Failed to fetch suggestions');
       } finally {
         setIsLoading(false);
       }
@@ -66,4 +66,3 @@ export function SoilSuggestions({ phValue }: SoilSuggestionsProps) {
     </Card>
   );
 }
-
