@@ -181,6 +181,10 @@ def create_app():
             logger.error(f"Prediction error: {str(e)}")
             raise HTTPException(status_code=500, detail=str(e))
 
+    @app.get('/vercel')
+    async def vercel_deployment():
+        return {"message": "Vercel deployment successful"}
+
     return app
 
 app = create_app()
